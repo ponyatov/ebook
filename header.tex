@@ -39,6 +39,25 @@
 
 % sources markup
 \usepackage{verbatim}
+\usepackage{listings}
+\usepackage{dirtree}
+
+\usepackage{lstlangspice}\lstdefinestyle{SPICE}{language=SPICE}
+
+% extra packages
+\usepackage[pdftex]{graphicx} % graph illustrations
+\usepackage{amssymb} % windows key
+
+
+% software menu & keys
+\usepackage[os=win]{menukeys} 
+\newcommand{\winstart}{$\boxplus$}
+\newcommand{\lms}{\keys{$\lhd$}}
+\newcommand{\rms}{\keys{$\rhd$}}
+\newcommand{\wcmd}[1]{\keys{\winstart+R}\ \directory{#1}}
+\newcommand{\file}[1]{\textbf{\textsf{#1}}}
+\newcommand{\checkbox}{$\boxtimes$}
+\newcommand{\uncheckbox}{$\square$}
 
 % shorts
 
@@ -52,3 +71,5 @@
 \newcommand{\term}[1]{\emph{#1}}
 
 \newcommand{\raspi}{Raspberry Pi}
+
+\newcommand{\cp}[1]{\footnote{\ \copyright\url{#1}}}
