@@ -1,0 +1,18 @@
+\secrel{Makefile}
+
+Вся сборка проекта управляется через \file{Makefile}, поделенный на несколько
+частей:
+
+\lstinputlisting[style=mk,title=Makefile.mk]{cross/Makefile.mk}
+
+Для генерации мейкфайла применяется скрипт, компонующий части (потребовалось
+для включения разбивки этих частей по книге):
+
+\lstinputlisting[title=bat.bat]{cross/bat.bat}
+
+\secdown
+
+\input{cross/app}
+\input{cross/hw}
+
+\secup

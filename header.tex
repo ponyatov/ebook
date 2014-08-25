@@ -39,10 +39,20 @@
 
 % sources markup
 \usepackage{verbatim}
-\usepackage{listings}
 \usepackage{dirtree}
+\usepackage{listings}
+\lstset{
+extendedchars=true,inputencoding=utf8, % i18n
+frame=single, % show frames around
+numbers=left, numberstyle=\small,numbersep=1mm,% line numbering
+tabsize=4, % tab style
+keywordstyle=\color{blue}\texttt,
+commentstyle=\color{magenta}\texttt,
+showspaces=true
+}
 
 \usepackage{lstlangspice}\lstdefinestyle{SPICE}{language=SPICE}
+\usepackage{lstlanggnumake}\lstdefinestyle{mk}{language=[GNU]Make}
 
 % extra packages
 \usepackage[pdftex]{graphicx} % graph illustrations
