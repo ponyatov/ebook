@@ -1,2 +1,0 @@
-# app: clock
-APP = clock
