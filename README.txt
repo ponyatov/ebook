@@ -1,9 +1,9 @@
 \en{
-This book is Electronics Hobbit Bible 
+This book is Electronics Hobbit Handbok 
 on making devices based on ARM/Cortex microprocessors.
 }
 
 \ru{
-Это Библия ЭлектроХоббита псвящена 
+Это Руководство ЭлектроХоббита посвящена 
 изготовлению электронных устройств на базе (микро)процессоров ARM/Cortex.
 }
