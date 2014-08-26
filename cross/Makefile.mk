@@ -36,13 +36,12 @@ TC = $(PWD)/tc
 ROOT = $(PWD)/root
 BOOT = $(ROOT)/boot
 
-DIRS = $(TC) $(ROOT) $(BOOT)
-
 MKDIR = mkdir -p
 WGET = wget -c -P $(GZ)
 MAKE = make -j$(shell grep processor /proc/cpuinfo |wc -l)
 INSTALL = make install-strip
 
+DIRS = $(TC) $(ROOT) $(BOOT)
 .PHONY: dirs
 dirs:
 	$(MKDIR) $(DIRS) $(GZ) $(SRC) $(TMP)

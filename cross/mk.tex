@@ -10,5 +10,103 @@ linerange={1-1}]{cross/Makefile.mk}
 
 \input{cross/app}
 \input{cross/hw}
+\input{cross/packs}
+
+\secru{Директории}
+
+в которых будет производиться сборка, и формироваться целевая файловая система.
+
+\secdown
+
+\secrel{PWD}
+
+Встроенная переменная, возвращает текущий каталог, из которого быз запущен
+\file{make}, т.е. \file{/home/user/book/cross}.
+
+\secrel{GZ}
+
+Каталог для хранения архивов исходных текстов пакетов, закачанных из \internet\
+(локальное зеркало). Если вы работаете сразу с несколькими проектами, создайте
+отдельный каталог, например \file{/home/user/gz}, и из каждого проекта сделайте
+на него симлинк \file{ln -s /home/user/gz gz}. В этом случае все архивы окажутся
+общими для всех проектов, причем там могут лежать несколько версий одного
+пакета.
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=32,linerange={32-32}]{cross/Makefile.mk}
+
+\secrel{SRC}
+
+Сюда будут распаковываться исходные тексты пакетов
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=33,linerange={33-33}]{cross/Makefile.mk}
+
+\secrel{TMP}
+
+Здесь будут создаваться и удаляться временные файлы и каталоги при сборке
+пакетов\ --- out of tree сборка, за исключением пакетов, которые могут быть
+собраны только в каталоге с исходными текстами.
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=34,linerange={34-34}]{cross/Makefile.mk}
+
+\secrel{TC}
+
+От ToolChain, или TargetCompiler\ --- сюда поместим собранный кросс-тулчейн,
+чтобы не засорять основную \linux-систему, и иметь возможность пользоваться
+разными версиями компиляторов для разных проектов
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=35,linerange={35-35}]{cross/Makefile.mk}
+
+\secrel{ROOT}
+
+В этом каталоге будем собирать \term{rootfs}\ --- корневую файловую систему
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=36,linerange={36-36}]{cross/Makefile.mk}
+
+\secrel{BOOT}
+
+В этот подкаталог поместим откомпилированное ядро, файлы загрузчика и другие
+файлы, обеспечивающие запуск системы до момента монтирования rootfs.
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=37,linerange={37-37}]{cross/Makefile.mk}
+
+\secup
+
+\secru{Макросы команд}
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=39,linerange={39-42}]{cross/Makefile.mk}
+
+\secru{\file{dirs}}
+
+Создание дерева каталогов для сборки.
+Каталоги не зачищаемые пакетом \file{distclean}, прописаны отдельно. 
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=44,linerange={44-47}]{cross/Makefile.mk}
+
+\secru{\file{distclean}}
+
+Зачистка проекта, применяется при полной пересборке
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=49,linerange={49-52}]{cross/Makefile.mk}
+
+\secru{Загрузка архивов исходников\ --- \file{gz}}
+
+Длительная и потребляющая трафик операция, нужен онлайн.
+По-хорошему архив исходников тут было бы желательно загружать через пиринговые
+сети, а не нагружать зеркала. Если эта книга вдруг окажется популярной, нужно
+будет сделать хранение архивов на торрентах.
+
+\lstinputlisting[style=mk,title=Makefile.mk,
+firstnumber=54,linerange={54-63}]{cross/Makefile.mk}
+
+
 
 \secup
