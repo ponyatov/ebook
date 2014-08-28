@@ -71,13 +71,13 @@ $(SRC)/%/README: $(GZ)/%.tar.xz
 	
 CFG = configure --disable-nls
 
-HCFG = $(CFG) --prefix=$(TC)
+BCFG = $(CFG) --prefix=$(TC)
+TCFG = $(CFG) --prefix=$(ROOT)
 
 CFG_BINUTILS = --target=$(TARGET) $(CFG_CPU)
-	
 .PHONY: binutils
 binutils: $(SRC)/$(BINUTILS)/README
 	rm -rf $(TMP)/$(BINUTILS) && mkdir $(TMP)/$(BINUTILS) &&\
 	cd $(TMP)/$(BINUTILS) &&\
-	$(SRC)/$(BINUTILS)/$(HCFG) $(CFG_BINUTILS) &&\
+	$(SRC)/$(BINUTILS)/$(BCFG) $(CFG_BINUTILS) &&\
 	$(MAKE) && $(INSTALL) 
