@@ -61,3 +61,23 @@ gz:
 	$(WGET) https://www.kernel.org/pub/linux/kernel/v3.x/$(LINUX).tar.xz
 	$(WGET) http://www.uclibc.org/downloads/$(LIBC).tar.xz
 	$(WGET) http://busybox.net/downloads/$(BB).tar.bz2
+
+$(SRC)/%/README: $(GZ)/%.tar.gz
+	cd $(SRC) &&  zcat $< | tar x && touch $@
+$(SRC)/%/README: $(GZ)/%.tar.bz2
+	cd $(SRC) && bzcat $< | tar x && touch $@
+$(SRC)/%/README: $(GZ)/%.tar.xz
+	cd $(SRC) && xzcat $< | tar x && touch $@
+	
+CFG = configure --disable-nls
+
+HCFG = $(CFG) --prefix=$(TC)
+
+CFG_BINUTILS = --target=$(TARGET) $(CFG_CPU)
+	
+.PHONY: binutils
+binutils: $(SRC)/$(BINUTILS)/README
+	rm -rf $(TMP)/$(BINUTILS) && mkdir $(TMP)/$(BINUTILS) &&\
+	cd $(TMP)/$(BINUTILS) &&\
+	$(SRC)/$(BINUTILS)/$(HCFG) $(CFG_BINUTILS) &&\
+	$(MAKE) && $(INSTALL) 
