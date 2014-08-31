@@ -1,0 +1,2 @@
+# STM32 VLDISCOVERY 
+include cpu/arm/STM32F103RB.mk

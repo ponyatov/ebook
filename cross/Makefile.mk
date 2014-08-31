@@ -3,7 +3,7 @@
 # app: clock
 APP = clock
 
-# hw: x86pc qemu386 coubie1 rpi
+# hw: x86pc qemu386 coubie1 rpi avr8
 HW = x86pc
 
 include hw/$(HW).mk

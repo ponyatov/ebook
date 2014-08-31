@@ -1,0 +1,3 @@
+# STM32F100RB
+include cpu/arm/STM32F100.mk
+LDSCRIPT = ld/stm32/STM32F100RB.ld
