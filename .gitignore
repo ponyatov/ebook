@@ -3,4 +3,4 @@ tmp
 *.swp
 *.gz
 *.bak
-project-cache.lib
+*-cache.lib
